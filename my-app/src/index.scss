@@ -1,0 +1,96 @@
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.page-client {
+	padding: 0 15px;
+	text-align: center;
+	
+	.btns {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+	button {
+		font-size: 50px;
+		height: 250px;
+		width: 250px;
+		margin: 50px 15px 0;
+		border: none;
+		border-radius: 50%;
+		outline: none;
+		color: #fff;
+		cursor: pointer;
+	}
+}
+
+.page-dashboard {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 50px 0;
+
+	.recharts-wrapper {
+		margin: 0 auto;
+	}
+	.counts {
+		display: flex;
+	}
+	.box {
+		font-size: 50px;
+		color: white;
+		border-radius: 5%;
+		margin-top: 25px;
+		padding: 25px;
+		text-align: center;
+		width: 25%;
+
+		&.bg-orange {
+			margin-left: auto;
+			margin-right: 50px;
+		}
+		&.bg-blue {
+			margin-left: 50px;
+			margin-right: auto;
+		}
+	}
+	p {
+		text-align: center;
+	}
+	// .recharts-yAxis {
+
+	// 	text tspan {
+	// 		display: block;
+	// 		transform: rotate(90deg);
+	// 		transform-origin: center;
+	// 	}
+	// }
+}
+
+.bg-orange {
+	background-color: #ff9559;
+}
+.bg-blue {
+	background-color: #007aff;
+}
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
