@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import io from 'socket.io-client'
 import Client from './components/pages/client';
 import Dashboard from './components/pages/dashboard';
-import Test from './components/pages/test';
 import './App.css';
 
 interface IProps {
@@ -16,7 +15,6 @@ const App: React.FC<IProps> = (props) => {
 			<BrowserRouter>
 				<Switch>
 					<Route path="/client" component={Client} />
-					<Route path="/test" component={Test}/>
 					<Route path="/" component={Dashboard} />
 				</Switch>
 			</BrowserRouter>

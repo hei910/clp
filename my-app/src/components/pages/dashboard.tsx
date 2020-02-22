@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
+import QRCode from 'qrcode.react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 interface IProps {
@@ -17,6 +18,8 @@ let socketOn = false;
 let counts:Counts = { orange: 0, blue: 0};
 let t = 0;
 let timer: any;
+
+const client_page_url = window.location.origin + "/client"
 
 const Dashboard: React.FC<IProps> = (props) => {
     const [data, setData] = useState<Counts[]>([{ name: 0, orange: 0, blue: 0, black: 0 }]);
@@ -61,7 +64,7 @@ const Dashboard: React.FC<IProps> = (props) => {
                 setState("finished")
                 clearInterval(timer)
             }
-        }, 100)
+        }, 500)
     }
 
     const initSocket = () => {
@@ -97,7 +100,10 @@ const Dashboard: React.FC<IProps> = (props) => {
                 <div className="box bg-blue">{ getTotalCounts("blue") }</div>
             </div>
             <p>
-                Please go to <a href={window.location.origin + "/client"}>{window.location.origin + "/client"}</a> to join the game.
+                Please go to <a href={client_page_url}>{client_page_url}</a> to join the game.
+            </p>
+            <p>
+                <QRCode value={client_page_url} size={172} />
             </p>
 		</div>
 	);

@@ -1,8 +1,10 @@
 body {
-	margin: 0;
+	max-width: 1140px;
+	margin: 0 auto;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
 	sans-serif;
+	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -38,8 +40,6 @@ code {
 }
 
 .page-dashboard {
-	max-width: 960px;
-	margin: 0 auto;
 	padding: 50px 0;
 
 	.recharts-wrapper {
