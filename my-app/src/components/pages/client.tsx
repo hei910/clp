@@ -1,17 +1,18 @@
-import React, { useState, useContext, useEffect, MouseEvent } from 'react';
+import React, { useEffect, MouseEvent } from 'react';
 import io from 'socket.io-client';
 
 interface IProps {
 }
+let socket: any;
 
 const Client: React.FC<IProps> = (props) => {
-	const socket = io('http://localhost:1080');
 	
     useEffect(()=>{
-		initSocket()
+		socket = io('http://localhost:1080');
+		getCountsFromSocket()
 	},[])
 	
-    const initSocket = () => {
+    const getCountsFromSocket = () => {
         socket.on('getCounts', (message:string) => {
             console.log(message)
 		})

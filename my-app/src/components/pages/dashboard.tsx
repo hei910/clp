@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import QRCode from 'qrcode.react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
@@ -13,11 +13,10 @@ interface Counts {
 }
 type State = 'started' | 'finished' | null;
 
-const socket = io('http://localhost:1080');
-let socketOn = false;
 let counts:Counts = { orange: 0, blue: 0};
 let t = 0;
 let timer: any;
+let socket: any;
 
 const client_page_url = window.location.origin + "/client"
 
@@ -32,18 +31,13 @@ const Dashboard: React.FC<IProps> = (props) => {
     }    
 
     useEffect(()=>{
-        console.log("state: ", state)
-		initSocket()
+        socket = io('http://localhost:1080');
+		getCountsFromSocket()
     },[])
     
     useEffect(() => {
         if (state === "started") runTimer();
-        if (state === "finished") abc();
     },[state])
-
-    const abc = () => {
-        console.log(123, state)
-    }
 
     const runTimer = () => {
         timer = setInterval( () => {
@@ -67,20 +61,15 @@ const Dashboard: React.FC<IProps> = (props) => {
         }, 500)
     }
 
-    const initSocket = () => {
+    const getCountsFromSocket = () => {
         socket.on('getCounts', (message: keyof Counts) => {
             counts[message]++;
-            if (!state && !socketOn) {
-                setState("started");
-                socketOn = true
-            }
+            if (!state && !t) setState("started");
         })
     }
 
     const getTotalCounts = (type: "orange" | "blue") => {
-        let total = 0;
-        data.forEach(item => total = total + item[type])
-        return total;
+        return data.reduce( (acc, cur) => acc + cur[type], 0 )
     }
 
 	return (
