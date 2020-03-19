@@ -1,3 +1,14 @@
+# Assignment:
+
+Create an application that can live update a dashboard when a client application clicks on either the orange or blue button. The dashboard must show live updates of the number of clicks without polling the server and display a chart after 5 seconds is elapsed. The game can be reset when the page is refreshed.
+
+## Demo:
+
+https://game.clpsec.com/dashboard
+
+https://game.clpsec.com/client
+
+
 # Start the App
 
 1 - start the server at /server
